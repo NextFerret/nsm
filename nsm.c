@@ -188,7 +188,7 @@ static void setup_dirs(void)
 
 static bool is_auto_name(const char *name)
 {
-    if (strcmp(name, "nftreedaemon") == 0) return true;
+    if (strcmp(name, "nsmd") == 0) return true;
     for (const char *p = name; (p = strstr(p, "apt")) != NULL; p++) {
         bool pre = (p == name || !isalnum((unsigned char)p[-1]));
         bool post = (p[3] == '\0' || !isalnum((unsigned char)p[3]));
@@ -199,7 +199,7 @@ static bool is_auto_name(const char *name)
 
 static const char *snapshot_dir(const char *name, const char *type)
 {
-    if (strcmp(name, "nftreedaemon") == 0) return DAEMON_AUTO_DIR;
+    if (strcmp(name, "nsmd") == 0) return DAEMON_AUTO_DIR;
     return strcmp(type, "auto") == 0 ? AUTO_DIR : MANUAL_DIR;
 }
 
@@ -467,7 +467,7 @@ static void print_usage(const char *prog)
     printf("Usage: %s <command> [argument]\n\n", prog);
     printf("Commands:\n");
     printf("  create <name>    Create root+home snapshots\n");
-    printf("                   Auto type if name matches 'apt', 'apt-*', or 'nftreedaemon'\n");
+    printf("                   Auto type if name matches 'apt', 'apt-*', or 'nsmd'\n");
     printf("  rollback <name>  Roll back to named snapshot (must start with root- or home-)\n");
     printf("  list             List all snapshots\n");
     printf("  autodel          Delete oldest auto snapshots, keeping the latest 6\n");
